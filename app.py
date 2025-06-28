@@ -9,7 +9,12 @@ from flask_cors import CORS
 from datetime import datetime
 
 app = Flask(__name__, static_folder='static')
-CORS(app)
+CORS(app, resources={
+    r"/analyze": {"origins": ["https://abaca.vercel.app"]},
+    r"/history": {"origins": ["https://abaca.vercel.app"]},
+    r"/scan/*": {"origins": ["https://abaca.vercel.app"]},
+    r"/api/grade-info": {"origins": ["https://abaca.vercel.app"]}
+})
 
 # Configuration
 UPLOAD_FOLDER = 'uploads'
